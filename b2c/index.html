@@ -1,0 +1,1119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Beacon: See your market. Win it.</title>
+<meta name="description" content="Beacon is the AI growth copilot for small merchants. It sees your market: competitors, demand and pricing, then runs the ads and campaigns that win it. Store copilots see your shelves. Beacon sees your market.">
+<meta name="theme-color" content="#1E2761">
+<meta property="og:title" content="Beacon: See your market. Win it.">
+<meta property="og:description" content="The AI growth copilot for small merchants. See your market. Act on it. One tap.">
+<meta property="og:type" content="website">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Sora:wght@400;600;700;800&family=Inter:wght@400;500;600;700&family=Caveat:wght@600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --navy:#1E2761;
+    --navy-deep:#151b47;
+    --navy-2:#242e73;
+    --amber:#F0A830;
+    --amber-soft:#F7C777;
+    --green:#2C8C6E;
+    --risk:#C9822A;
+    --violet:#7C5CBF;
+    --danger:#B4453A;
+    --surface:#FFFFFF;
+    --bg:#F2F5FC;
+    --ink:#1A2033;
+    --ink-2:#5B6478;
+    --line:#E4E9F5;
+    --radius:18px;
+    --shadow:0 20px 50px -24px rgba(21,27,71,.45);
+    --shadow-sm:0 8px 24px -14px rgba(21,27,71,.35);
+    --maxw:1140px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth}
+  body{
+    font-family:'Inter',system-ui,-apple-system,sans-serif;
+    color:var(--ink);background:var(--bg);line-height:1.55;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  h1,h2,h3,.brand{font-family:'Sora',sans-serif;letter-spacing:-.02em;line-height:1.08}
+  a{color:inherit;text-decoration:none}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px}
+  .eyebrow{font-size:13px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--amber)}
+  .muted{color:var(--ink-2)}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;gap:9px;font-weight:600;font-size:15px;
+    padding:13px 22px;border-radius:999px;border:1.5px solid transparent;cursor:pointer;
+    transition:transform .15s ease,box-shadow .2s ease,background .2s ease}
+  .btn-amber{background:var(--amber);color:#3a2708;box-shadow:0 10px 26px -10px rgba(240,168,48,.7)}
+  .btn-amber:hover{transform:translateY(-2px);box-shadow:0 16px 34px -12px rgba(240,168,48,.85)}
+  .btn-ghost{background:rgba(255,255,255,.06);border-color:rgba(255,255,255,.28);color:#fff}
+  .btn-ghost:hover{background:rgba(255,255,255,.14)}
+  .btn-navy{background:var(--navy);color:#fff}
+  .btn-navy:hover{transform:translateY(-2px);box-shadow:var(--shadow-sm)}
+
+  /* Nav */
+  header.nav{position:sticky;top:0;z-index:50;background:rgba(30,39,97,.82);
+    backdrop-filter:blur(14px);border-bottom:1px solid rgba(255,255,255,.08)}
+  .nav-inner{display:flex;align-items:center;justify-content:space-between;height:66px}
+  .brand{display:flex;align-items:center;gap:11px;color:#fff;font-weight:800;font-size:20px}
+  .nav-links{display:flex;gap:28px;align-items:center}
+  .nav-links a{color:rgba(255,255,255,.82);font-size:14.5px;font-weight:500}
+  .nav-links a:hover{color:#fff}
+  .nav-cta{display:flex;gap:12px;align-items:center}
+
+  /* Beacon mark / ping */
+  .mark{position:relative;width:26px;height:26px;display:grid;place-items:center;flex:none}
+  .mark .core{width:9px;height:9px;border-radius:50%;background:var(--amber);z-index:2;
+    box-shadow:0 0 12px 2px rgba(240,168,48,.8)}
+  .mark .ring{position:absolute;inset:0;margin:auto;width:9px;height:9px;border-radius:50%;
+    border:2px solid var(--amber);opacity:0;animation:ping 2.4s ease-out infinite}
+  .mark .ring:nth-child(2){animation-delay:.8s}
+  .mark .ring:nth-child(3){animation-delay:1.6s}
+  @keyframes ping{0%{transform:scale(1);opacity:.9}80%{opacity:0}100%{transform:scale(3.4);opacity:0}}
+
+  /* Hero */
+  .hero{position:relative;background:
+      radial-gradient(1100px 520px at 78% -8%,rgba(240,168,48,.20),transparent 60%),
+      radial-gradient(900px 500px at 8% 12%,rgba(124,92,191,.20),transparent 55%),
+      linear-gradient(180deg,var(--navy) 0%,var(--navy-deep) 100%);
+    color:#fff;overflow:hidden}
+  .hero:after{content:"";position:absolute;inset:0;
+    background-image:radial-gradient(rgba(255,255,255,.06) 1px,transparent 1px);
+    background-size:26px 26px;opacity:.5;pointer-events:none;mask-image:linear-gradient(180deg,#000,transparent)}
+  .hero-grid{position:relative;z-index:2;display:grid;grid-template-columns:1.05fr .95fr;gap:56px;
+    align-items:center;padding:74px 0 88px}
+  .hero h1{font-size:60px;font-weight:800}
+  .hero h1 .win{color:var(--amber)}
+  .hero .lede{font-size:19px;color:rgba(255,255,255,.8);margin:22px 0 12px;max-width:520px}
+  .position-line{display:inline-flex;gap:10px;align-items:center;background:rgba(255,255,255,.07);
+    border:1px solid rgba(255,255,255,.16);padding:9px 15px;border-radius:999px;font-size:13.5px;
+    color:rgba(255,255,255,.9);margin-bottom:26px}
+  .position-line b{color:var(--amber-soft);font-weight:600}
+  .hero-cta{display:flex;gap:14px;flex-wrap:wrap;margin-top:28px}
+  .hero-trust{margin-top:26px;font-size:13.5px;color:rgba(255,255,255,.62);display:flex;gap:8px;align-items:center}
+  .hero-trust .dot{width:5px;height:5px;border-radius:50%;background:var(--green)}
+
+  /* Phone mock */
+  .phone{position:relative;justify-self:center;width:300px;height:600px;border-radius:40px;
+    background:linear-gradient(160deg,#2b3madd,#20285f);padding:12px;
+    box-shadow:0 40px 80px -30px rgba(0,0,0,.7),inset 0 0 0 1.5px rgba(255,255,255,.08)}
+  .phone .screen{background:var(--bg);border-radius:30px;height:100%;overflow:hidden;position:relative;display:flex;flex-direction:column}
+  .phone .topbar{background:var(--navy);color:#fff;padding:16px 16px 14px;display:flex;align-items:center;gap:9px}
+  .phone .topbar .mark{width:22px;height:22px}
+  .phone .topbar b{font-family:'Sora';font-size:15px}
+  .phone .body{padding:14px;display:flex;flex-direction:column;gap:11px;overflow:hidden}
+  .snap{background:#fff;border-radius:14px;padding:13px;box-shadow:var(--shadow-sm)}
+  .snap .row{display:flex;justify-content:space-between;align-items:center;font-size:12px}
+  .snap h4{font-family:'Sora';font-size:13px;margin-bottom:8px;color:var(--navy)}
+  .bar{height:7px;border-radius:5px;background:var(--line);overflow:hidden;margin:5px 0 2px}
+  .bar>span{display:block;height:100%;border-radius:5px;background:var(--amber)}
+  .insight{background:#fff;border-radius:14px;padding:13px;box-shadow:var(--shadow-sm);border-left:4px solid var(--green)}
+  .insight .ribbon{display:inline-flex;align-items:center;gap:6px;font-size:10.5px;font-weight:700;
+    color:var(--green);text-transform:uppercase;letter-spacing:.06em}
+  .insight p{font-size:12px;color:var(--ink);margin:7px 0 10px;line-height:1.45}
+  .chip{display:inline-flex;font-size:10px;background:var(--bg);color:var(--ink-2);padding:3px 8px;border-radius:6px;margin-right:5px}
+  .mini-approve{margin-top:9px;background:var(--amber);color:#3a2708;font-weight:700;font-size:11.5px;
+    text-align:center;padding:9px;border-radius:9px}
+  .float-tag{position:absolute;z-index:3;background:#fff;border-radius:12px;padding:9px 12px;
+    box-shadow:var(--shadow);font-size:12px;font-weight:600;display:flex;align-items:center;gap:8px}
+  .float-tag .ic{width:22px;height:22px;border-radius:7px;display:grid;place-items:center;color:#fff;font-size:12px}
+  .phone .tabbar{margin-top:auto;background:#fff;border-top:1px solid var(--line);display:flex;
+    justify-content:space-around;padding:9px 0 11px;flex:none}
+  .phone .tabbar .tab{display:flex;flex-direction:column;align-items:center;gap:2px;font-size:9px;color:var(--ink-2)}
+  .phone .tabbar .tab.on{color:var(--navy);font-weight:700}
+  .phone .tabbar .tab .ti{font-size:15px}
+  .ft-1{top:60px;left:-26px;animation:floaty 5s ease-in-out infinite}
+  .ft-2{bottom:96px;right:-30px;animation:floaty 6s ease-in-out infinite .8s}
+  @keyframes floaty{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+  /* Logos / marquee strip */
+  .strip{background:var(--navy-deep);color:rgba(255,255,255,.7);padding:18px 0;font-size:13px}
+  .strip .wrap{display:flex;align-items:center;justify-content:center;gap:14px;flex-wrap:wrap;text-align:center}
+  .strip b{color:#fff}
+  .strip .pill{border:1px solid rgba(255,255,255,.18);border-radius:999px;padding:5px 13px;font-weight:600;color:rgba(255,255,255,.85)}
+
+  /* Section shell */
+  section{padding:88px 0}
+  .sec-head{max-width:680px;margin:0 auto 52px;text-align:center}
+  .sec-head h2{font-size:38px;font-weight:800;margin:14px 0 14px;color:var(--navy)}
+  .sec-head p{font-size:17px;color:var(--ink-2)}
+
+  /* Problem */
+  .prob-grid{display:grid;grid-template-columns:1fr 1fr;gap:24px}
+  .prob{background:#fff;border-radius:var(--radius);padding:30px;box-shadow:var(--shadow-sm);border:1px solid var(--line)}
+  .prob h3{font-size:20px;color:var(--navy);margin-bottom:10px}
+  .prob p{color:var(--ink-2);font-size:15.5px}
+  .prob .tag{font-size:12px;font-weight:700;color:var(--danger);letter-spacing:.05em;text-transform:uppercase}
+
+  /* How it works: pillars */
+  .pillars{display:grid;grid-template-columns:repeat(4,1fr);gap:20px}
+  .pillar{background:#fff;border-radius:var(--radius);padding:26px 22px;box-shadow:var(--shadow-sm);
+    border:1px solid var(--line);position:relative;overflow:hidden}
+  .pillar .num{font-family:'Sora';font-weight:800;font-size:13px;color:var(--amber)}
+  .pillar .picon{width:46px;height:46px;border-radius:13px;display:grid;place-items:center;
+    margin:8px 0 14px;font-size:22px}
+  .pillar h3{font-size:19px;color:var(--navy);margin-bottom:8px}
+  .pillar p{font-size:14.5px;color:var(--ink-2)}
+  .pillar:after{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:var(--amber)}
+  .p2:after{background:var(--violet)}.p3:after{background:var(--green)}.p4:after{background:var(--risk)}
+
+  /* Snapshot feature (split) */
+  .split{display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center}
+  .split.rev{direction:rtl}.split.rev>*{direction:ltr}
+  .feat-card{background:linear-gradient(165deg,var(--navy),var(--navy-deep));border-radius:24px;
+    padding:30px;color:#fff;box-shadow:var(--shadow)}
+  .feat-card .kv{display:flex;justify-content:space-between;align-items:center;padding:14px 0;border-bottom:1px solid rgba(255,255,255,.1);font-size:14px}
+  .feat-card .kv:last-child{border-bottom:0}
+  .feat-card .kv b{font-family:'Sora'}
+  .feat-card .badge{font-size:11px;font-weight:700;padding:4px 10px;border-radius:999px}
+  .b-green{background:rgba(44,140,110,.25);color:#7fd9bd}
+  .b-amber{background:rgba(240,168,48,.22);color:var(--amber-soft)}
+  .b-violet{background:rgba(124,92,191,.25);color:#c3aef2}
+  .feat-txt h2{font-size:34px;color:var(--navy);margin:14px 0 16px}
+  .feat-txt p{font-size:16px;color:var(--ink-2);margin-bottom:16px}
+  .checklist{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:8px}
+  .checklist li{display:flex;gap:12px;align-items:flex-start;font-size:15px}
+  .checklist .ck{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(44,140,110,.15);
+    color:var(--green);display:grid;place-items:center;font-size:12px;font-weight:700;margin-top:2px}
+
+  /* Comparison */
+  .compare-wrap{background:var(--navy);border-radius:24px;overflow:hidden;box-shadow:var(--shadow)}
+  .compare{width:100%;border-collapse:collapse;color:#fff}
+  .compare th,.compare td{padding:18px 22px;text-align:left;font-size:15px;border-bottom:1px solid rgba(255,255,255,.09)}
+  .compare thead th{font-family:'Sora';font-size:14px;color:rgba(255,255,255,.7);font-weight:600;background:rgba(255,255,255,.04)}
+  .compare thead th.you{color:var(--amber);background:rgba(240,168,48,.1)}
+  .compare td.feat{color:rgba(255,255,255,.85);font-weight:500}
+  .compare td.you{background:rgba(240,168,48,.07);font-weight:600}
+  .yes{color:#7fd9bd;font-weight:700}.no{color:rgba(255,255,255,.4)}
+  .compare tr:last-child td{border-bottom:0}
+
+  /* Pricing */
+  .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:22px;align-items:stretch}
+  .plan{background:#fff;border-radius:var(--radius);padding:30px 26px;border:1px solid var(--line);
+    box-shadow:var(--shadow-sm);display:flex;flex-direction:column}
+  .plan.feat{border:2px solid var(--amber);box-shadow:0 24px 50px -22px rgba(240,168,48,.5);position:relative}
+  .plan.feat .flag{position:absolute;top:-13px;left:50%;transform:translateX(-50%);background:var(--amber);
+    color:#3a2708;font-size:11.5px;font-weight:800;padding:5px 14px;border-radius:999px;letter-spacing:.04em}
+  .plan h3{font-size:18px;color:var(--navy)}
+  .plan .price{font-family:'Sora';font-size:40px;font-weight:800;color:var(--navy);margin:10px 0 2px}
+  .plan .price span{font-size:15px;font-weight:600;color:var(--ink-2)}
+  .plan .desc{font-size:13.5px;color:var(--ink-2);min-height:38px;margin-bottom:16px}
+  .plan ul{list-style:none;display:flex;flex-direction:column;gap:11px;margin-bottom:24px;flex:1}
+  .plan li{font-size:14px;display:flex;gap:9px;align-items:flex-start;color:var(--ink)}
+  .plan li:before{content:"✓";color:var(--green);font-weight:800;flex:none}
+  .plan .fee{font-size:12.5px;color:var(--ink-2);border-top:1px dashed var(--line);padding-top:12px;margin-top:2px}
+
+  /* Trust stats */
+  .stats{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;text-align:center}
+  .stat .n{font-family:'Sora';font-size:40px;font-weight:800;color:var(--amber)}
+  .stat .l{font-size:14px;color:rgba(255,255,255,.72);margin-top:4px}
+
+  /* CTA band */
+  .cta-band{background:
+      radial-gradient(700px 300px at 80% 0%,rgba(240,168,48,.22),transparent 60%),
+      linear-gradient(180deg,var(--navy),var(--navy-deep));
+    color:#fff;border-radius:28px;padding:60px 40px;text-align:center;position:relative;overflow:hidden}
+  .cta-band h2{font-size:40px;font-weight:800;max-width:640px;margin:0 auto 16px}
+  .cta-band p{color:rgba(255,255,255,.78);font-size:17px;max-width:520px;margin:0 auto 30px}
+
+  /* Hand-drawn hero annotations */
+  .hero-visual{position:relative;width:300px;margin:0 auto}
+  .doodles{position:absolute;inset:-30px -10px;z-index:1;pointer-events:none;overflow:visible}
+  .doodles path,.doodles circle,.doodles line{stroke:rgba(255,255,255,.22);fill:none;stroke-width:1.6;stroke-linecap:round}
+  .doodles .spark{stroke:rgba(240,168,48,.55);stroke-width:2}
+  .phone{animation:rise .9s cubic-bezier(.2,.7,.3,1) both}
+  @keyframes rise{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+  .ann{position:absolute;z-index:6;font-family:'Caveat',cursive;font-weight:700;font-size:20px;
+    color:var(--amber-soft);line-height:1.06;width:120px;opacity:0;transform:translateY(10px);
+    text-shadow:0 1px 6px rgba(10,14,40,.85),0 0 1px rgba(10,14,40,.9);
+    animation:annIn .6s cubic-bezier(.2,.7,.3,1) forwards}
+  .ann svg{position:absolute;overflow:visible;top:30px}
+  .ann .apath{stroke:var(--amber);stroke-width:2.4;fill:none;stroke-linecap:round;stroke-linejoin:round;
+    stroke-dasharray:150;stroke-dashoffset:150;animation:draw .7s ease forwards}
+  .ann-l1,.ann-l2,.ann-l3{text-align:right}
+  .ann-r1,.ann-r2,.ann-r3{text-align:left}
+  .ann-l1 svg,.ann-l2 svg,.ann-l3 svg{right:-52px}
+  .ann-r1 svg,.ann-r2 svg,.ann-r3 svg{left:-52px}
+  .ann-l1{top:24px;left:-150px;animation-delay:.40s}   .ann-l1 .apath{animation-delay:.9s}
+  .ann-r1{top:24px;right:-150px;animation-delay:.55s}   .ann-r1 .apath{animation-delay:1.05s}
+  .ann-l2{top:266px;left:-150px;animation-delay:.70s}  .ann-l2 .apath{animation-delay:1.2s}
+  .ann-r2{top:266px;right:-150px;animation-delay:.85s} .ann-r2 .apath{animation-delay:1.35s}
+  .ann-l3{top:500px;left:-150px;animation-delay:1.0s}  .ann-l3 .apath{animation-delay:1.5s}
+  .ann-r3{top:500px;right:-150px;animation-delay:1.15s} .ann-r3 .apath{animation-delay:1.65s}
+  @keyframes annIn{to{opacity:1;transform:translateY(0)}}
+  @keyframes draw{to{stroke-dashoffset:0}}
+  .win{position:relative;display:inline-block}
+  .scribble{position:absolute;left:-4px;bottom:-15px;width:calc(100% + 8px);height:18px;overflow:visible}
+  .scribble path{stroke:var(--amber);stroke-width:4;fill:none;stroke-linecap:round;
+    stroke-dasharray:340;stroke-dashoffset:340;animation:draw 1s ease .9s forwards}
+
+  /* Value carousel */
+  .carousel{position:relative}
+  .vc-track{display:flex;gap:20px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;
+    padding:6px 2px 20px;-ms-overflow-style:none;scrollbar-width:none}
+  .vc-track::-webkit-scrollbar{display:none}
+  .vc-card{flex:0 0 340px;max-width:86vw;scroll-snap-align:start;background:#fff;border-radius:var(--radius);
+    padding:30px 28px;border:1px solid var(--line);box-shadow:var(--shadow-sm);position:relative;overflow:hidden}
+  .vc-card:before{content:"";position:absolute;left:0;top:0;height:5px;width:100%;background:var(--accent,var(--amber))}
+  .vc-ic{width:54px;height:54px;border-radius:15px;display:grid;place-items:center;font-size:26px;margin-bottom:16px;
+    background:color-mix(in srgb,var(--accent,var(--amber)) 15%,#fff)}
+  .vc-card .tag{font-size:12px;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--accent,var(--risk))}
+  .vc-card h3{font-size:21px;color:var(--navy);margin:6px 0 12px;line-height:1.15}
+  .vc-card p{font-size:15px;color:var(--ink-2);line-height:1.55}
+  .vc-nav{display:flex;justify-content:center;align-items:center;gap:18px;margin-top:10px}
+  .vc-arrow{width:46px;height:46px;border-radius:50%;border:1.5px solid var(--line);background:#fff;cursor:pointer;
+    display:grid;place-items:center;color:var(--navy);font-size:19px;transition:all .18s ease}
+  .vc-arrow:hover{background:var(--navy);color:#fff;border-color:var(--navy);transform:translateY(-2px)}
+  .vc-dots{display:flex;gap:8px;align-items:center}
+  .vc-dot{width:8px;height:8px;border-radius:50%;background:var(--line);cursor:pointer;transition:all .2s ease;border:0;padding:0}
+  .vc-dot.on{background:var(--amber);width:24px;border-radius:5px}
+
+  /* Industry verticals */
+  .verticals{display:grid;grid-template-columns:repeat(3,1fr);gap:22px}
+  .vcard{background:#fff;border-radius:var(--radius);padding:26px 24px;border:1px solid var(--line);
+    box-shadow:var(--shadow-sm);display:flex;flex-direction:column;position:relative;overflow:hidden;
+    transition:transform .18s ease,box-shadow .2s ease}
+  .vcard:hover{transform:translateY(-4px);box-shadow:var(--shadow)}
+  .vcard:before{content:"";position:absolute;left:0;top:0;height:4px;width:100%;background:var(--accent,var(--amber))}
+  .vhead{display:flex;align-items:center;gap:13px;margin-bottom:14px}
+  .vicon{width:48px;height:48px;border-radius:14px;display:grid;place-items:center;font-size:24px;flex:none;
+    background:color-mix(in srgb,var(--accent,var(--amber)) 14%,#fff)}
+  .vhead h3{font-size:18px;color:var(--navy);line-height:1.15}
+  .vhead .sub{font-size:12.5px;color:var(--ink-2)}
+  .vcard .scenario{font-size:14.5px;color:var(--ink);line-height:1.55;flex:1}
+  .vcard .scenario b{color:var(--navy);font-weight:600}
+  .vtags{display:flex;flex-wrap:wrap;gap:7px;margin-top:16px}
+  .vtags span{font-size:11.5px;font-weight:600;padding:5px 10px;border-radius:999px;
+    background:color-mix(in srgb,var(--accent,var(--amber)) 12%,#fff);color:var(--accent,var(--risk))}
+
+  /* Contact form */
+  .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center;
+    background:linear-gradient(165deg,var(--navy),var(--navy-deep));border-radius:28px;padding:48px;color:#fff}
+  .contact-grid h2{font-size:34px;font-weight:800;margin-bottom:14px}
+  .contact-grid p{color:rgba(255,255,255,.78);font-size:16px;margin-bottom:20px}
+  .contact-grid .clist{list-style:none;display:flex;flex-direction:column;gap:12px;margin-top:8px}
+  .contact-grid .clist li{display:flex;gap:11px;align-items:center;font-size:14.5px;color:rgba(255,255,255,.85)}
+  .contact-grid .clist .ck{flex:none;width:22px;height:22px;border-radius:50%;background:rgba(240,168,48,.18);
+    color:var(--amber);display:grid;place-items:center;font-size:12px;font-weight:700}
+  .cform{background:#fff;border-radius:18px;padding:26px;box-shadow:var(--shadow)}
+  .cform .fld{margin-bottom:15px}
+  .cform label{display:block;font-size:13px;font-weight:600;color:var(--ink);margin-bottom:6px}
+  .cform input{width:100%;padding:12px 14px;border:1.5px solid var(--line);border-radius:11px;font-size:15px;
+    font-family:'Inter';color:var(--ink);transition:border .15s ease,box-shadow .15s ease;background:#fff}
+  .cform input:focus{outline:none;border-color:var(--amber);box-shadow:0 0 0 3px rgba(240,168,48,.2)}
+  .cform button{width:100%;justify-content:center;margin-top:6px;font-size:15.5px;padding:14px}
+  .cform .note{font-size:12px;color:var(--ink-2);text-align:center;margin-top:12px}
+  .cform .ok{display:none;background:rgba(44,140,110,.1);border:1px solid rgba(44,140,110,.35);
+    color:var(--green);border-radius:11px;padding:12px 14px;font-size:14px;font-weight:600;margin-top:14px;text-align:center}
+  .cform .err{color:var(--danger);font-size:12.5px;margin-top:-8px;margin-bottom:10px;display:none}
+
+  /* Footer */
+  footer{background:var(--navy-deep);color:rgba(255,255,255,.65);padding:52px 0 34px;font-size:14px}
+  .foot-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1fr;gap:32px;margin-bottom:34px}
+  footer h5{color:#fff;font-family:'Sora';font-size:14px;margin-bottom:14px}
+  footer a{display:block;color:rgba(255,255,255,.62);padding:5px 0}
+  footer a:hover{color:var(--amber-soft)}
+  .foot-bottom{border-top:1px solid rgba(255,255,255,.1);padding-top:22px;display:flex;
+    justify-content:space-between;flex-wrap:wrap;gap:12px;font-size:13px;color:rgba(255,255,255,.5)}
+
+  /* Gallery of product screens */
+  .gallery{display:grid;grid-template-columns:repeat(3,1fr);gap:34px;align-items:start;margin-top:12px}
+  .gcol{display:flex;flex-direction:column;align-items:center;text-align:center;gap:16px}
+  .gcap h3{font-size:18px;color:var(--navy);margin-bottom:4px}
+  .gcap p{font-size:14px;color:var(--ink-2);max-width:280px}
+  .device{width:100%;max-width:300px;border-radius:38px;background:linear-gradient(160deg,#2b356f,#1b2350);
+    padding:11px;box-shadow:0 34px 70px -32px rgba(21,27,71,.7),inset 0 0 0 1.5px rgba(255,255,255,.08)}
+  .device .scr{background:var(--bg);border-radius:28px;overflow:hidden;height:560px;display:flex;flex-direction:column;position:relative}
+  .d-top{background:#fff;padding:16px 15px 13px;border-bottom:1px solid var(--line);display:flex;align-items:center;gap:10px;flex:none}
+  .d-top .av{width:30px;height:30px;border-radius:9px;background:var(--navy);display:grid;place-items:center;flex:none}
+  .d-top .av .core{width:8px;height:8px;border-radius:50%;background:var(--amber);box-shadow:0 0 8px 1px rgba(240,168,48,.8)}
+  .d-top h4{font-family:'Sora';font-size:14px;color:var(--ink)}
+  .d-top .sub{font-size:11px;color:var(--ink-2)}
+  .d-body{padding:13px;display:flex;flex-direction:column;gap:11px;overflow:hidden;flex:1}
+  .card{background:#fff;border-radius:14px;padding:12px 13px;box-shadow:var(--shadow-sm)}
+  .card .lbl{font-size:10px;font-weight:700;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2);display:flex;align-items:center;gap:5px;margin-bottom:9px}
+  .kpi{display:flex;gap:9px}
+  .kpi .box{flex:1;background:var(--bg);border-radius:10px;padding:9px 10px}
+  .kpi .box .k{font-size:10px;color:var(--ink-2)}
+  .kpi .box .v{font-family:'Sora';font-size:18px;font-weight:800;color:var(--navy)}
+  .kpi .box .s{font-size:9.5px;color:var(--ink-2)}
+  .slider{height:8px;border-radius:6px;background:linear-gradient(90deg,#d9e0f2,#e8dcf7);position:relative;margin:6px 0}
+  .slider .knob{position:absolute;top:50%;left:62%;transform:translate(-50%,-50%);width:15px;height:15px;border-radius:50%;background:var(--amber);border:2.5px solid #fff;box-shadow:0 2px 6px rgba(0,0,0,.2)}
+  .slider-lbl{display:flex;justify-content:space-between;font-size:10px;color:var(--ink-2)}
+  .map{height:120px;border-radius:11px;background:
+      linear-gradient(rgba(44,140,110,.08),rgba(44,140,110,.08)),
+      repeating-linear-gradient(0deg,transparent,transparent 19px,rgba(44,140,110,.14) 20px),
+      repeating-linear-gradient(90deg,transparent,transparent 19px,rgba(44,140,110,.14) 20px);
+    background-color:#eef6f2;position:relative;overflow:hidden}
+  .map .dot{position:absolute;width:11px;height:11px;border-radius:50%;background:var(--navy)}
+  .map .you{width:26px;height:16px;border-radius:8px;background:var(--amber);color:#3a2708;font-size:9px;font-weight:800;
+    display:grid;place-items:center;left:44%;top:44%;box-shadow:0 0 0 4px rgba(240,168,48,.25)}
+  .map .cnt{position:absolute;right:8px;bottom:7px;font-size:10px;color:var(--ink-2);background:rgba(255,255,255,.8);padding:2px 6px;border-radius:6px}
+  .icard{background:#fff;border-radius:13px;padding:11px 12px;box-shadow:var(--shadow-sm);border-left:3px solid var(--green)}
+  .icard.risk{border-left-color:var(--risk)}.icard.anom{border-left-color:var(--violet)}
+  .icard .rb{font-size:9.5px;font-weight:800;letter-spacing:.05em;text-transform:uppercase;color:var(--green)}
+  .icard.risk .rb{color:var(--risk)}.icard.anom .rb{color:var(--violet)}
+  .icard h5{font-family:'Inter';font-size:12.5px;color:var(--ink);margin:5px 0 8px;line-height:1.35;font-weight:600}
+  .icard .foot{display:flex;justify-content:space-between;align-items:center;font-size:10px;color:var(--ink-2)}
+  .icard .plan{background:var(--bg);color:var(--navy);font-weight:700;font-size:10px;padding:5px 9px;border-radius:7px}
+  .digest{background:linear-gradient(160deg,#eef2fc,#f7f9fe);border:1px solid var(--line);border-radius:13px;padding:11px 12px}
+  .digest .lbl{color:var(--navy)}
+  .digest p{font-size:11px;color:var(--ink-2);line-height:1.4}
+  .fchips{display:flex;gap:6px;flex-wrap:wrap;flex:none}
+  .fchips span{font-size:10px;padding:5px 10px;border-radius:999px;background:#fff;border:1px solid var(--line);color:var(--ink-2)}
+  .fchips span.on{background:var(--navy);color:#fff;border-color:var(--navy)}
+  .wchip{display:inline-block;font-size:9.5px;background:var(--bg);color:var(--ink-2);padding:3px 7px;border-radius:6px;margin:0 4px 4px 0}
+  .writeback{background:rgba(44,140,110,.07);border:1px dashed rgba(44,140,110,.4);border-radius:9px;padding:8px 9px;margin-top:8px}
+  .writeback.amber{background:rgba(201,130,42,.07);border-color:rgba(201,130,42,.4)}
+  .writeback .wl{font-size:9px;font-weight:700;text-transform:uppercase;letter-spacing:.05em;color:var(--green)}
+  .writeback.amber .wl{color:var(--risk)}
+  .writeback p{font-size:11px;color:var(--ink);margin-top:3px}
+  .approve{margin-top:8px;background:var(--green);color:#fff;font-weight:700;font-size:11px;text-align:center;padding:9px;border-radius:9px}
+  .approve.amber{background:var(--risk)}
+  .cross-hd h5{font-family:'Inter';font-weight:700;font-size:12.5px;color:var(--ink);margin-bottom:6px;line-height:1.3}
+
+  @media(max-width:900px){
+    .hero-grid{grid-template-columns:1fr;gap:40px;padding:52px 0 64px}
+    .hero h1{font-size:44px}
+    .phone{display:none}
+    .ann,.doodles{display:none}
+    .prob-grid,.pillars,.split,.price-grid,.stats,.foot-grid,.verticals,.contact-grid{grid-template-columns:1fr}
+    .contact-grid{padding:32px}
+    .pillars{grid-template-columns:1fr 1fr}
+    .split.rev{direction:ltr}
+    .nav-links{display:none}
+    .sec-head h2,.feat-txt h2,.cta-band h2{font-size:30px}
+    .compare-wrap{overflow-x:auto}
+    .compare{min-width:640px}
+    section{padding:64px 0}
+  }
+  @media(max-width:560px){
+    .pillars{grid-template-columns:1fr}
+    .stats{grid-template-columns:1fr 1fr}
+    .hero h1{font-size:38px}
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="brand" href="#top">
+      <span class="mark"><span class="ring"></span><span class="ring"></span><span class="ring"></span><span class="core"></span></span>
+      Beacon
+    </a>
+    <nav class="nav-links">
+      <a href="#how">How it works</a>
+      <a href="#snapshot">Market Snapshot</a>
+      <a href="#why">Why Beacon</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <div class="nav-cta">
+      <a class="btn btn-amber" href="#contact">Contact us</a>
+    </div>
+  </div>
+</header>
+
+<!-- HERO -->
+<section class="hero" id="top" style="padding:0">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="position-line">
+        <span class="mark" style="width:18px;height:18px"><span class="core"></span></span>
+        <span>Store copilots see your shelves. <b>Beacon sees your market.</b></span>
+      </div>
+      <h1>See your market.<br><span class="win">Win it.<svg class="scribble" viewBox="0 0 220 18" preserveAspectRatio="none"><path d="M4,12 C 40,4 80,16 120,9 C 155,3 190,14 216,7"/></svg></span></h1>
+      <p class="lede">Beacon is the AI copilot that runs your whole business from the palm of your hand. It brings in demand, launches your ads, keeps your customers close, and stays on top of your stock and your bills. You just tap approve.</p>
+      <div class="hero-cta">
+        <a class="btn btn-amber" href="#cta">Get your free Market Snapshot →</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <div class="hero-trust"><span class="dot"></span> 60-second snapshot · No integrations to start · 6 languages at launch</div>
+    </div>
+
+    <div class="hero-visual">
+      <svg class="doodles" viewBox="0 0 520 640" preserveAspectRatio="xMidYMid meet">
+        <path d="M14,548 C120,528 96,452 210,442 C 330,432 372,372 486,300" stroke-dasharray="2 9"/>
+        <path d="M60,470 c-6,-10 -20,-10 -20,2 c0,10 20,26 20,26 c0,0 20,-16 20,-26 c0,-12 -14,-12 -20,-2 z"/>
+        <path d="M470,286 c-6,-10 -20,-10 -20,2 c0,10 20,26 20,26 c0,0 20,-16 20,-26 c0,-12 -14,-12 -20,-2 z"/>
+        <g class="spark"><path d="M40,120 l0,20 M30,130 l20,0"/></g>
+        <g class="spark"><path d="M486,150 l0,16 M478,158 l16,0"/></g>
+        <g class="spark"><path d="M30,300 l0,14 M23,307 l14,0"/></g>
+      </svg>
+
+      <span class="ann ann-l1">finds new<br>customers
+        <svg class="al" width="60" height="46"><path class="apath" d="M4,8 C 26,2 30,30 56,20"/><path class="apath" d="M56,20 L43,22 M56,20 L49,10"/></svg>
+      </span>
+      <span class="ann ann-r1">runs your<br>ads for you
+        <svg class="ar" width="60" height="46"><path class="apath" d="M56,8 C 34,2 30,30 4,20"/><path class="apath" d="M4,20 L17,22 M4,20 L11,10"/></svg>
+      </span>
+      <span class="ann ann-l2">reads your<br>whole market
+        <svg class="al" width="60" height="46"><path class="apath" d="M4,10 C 26,4 30,28 56,18"/><path class="apath" d="M56,18 L43,20 M56,18 L49,9"/></svg>
+      </span>
+      <span class="ann ann-r2">restocks<br>your shelves
+        <svg class="ar" width="60" height="46"><path class="apath" d="M56,10 C 34,4 30,28 4,18"/><path class="apath" d="M4,18 L17,20 M4,18 L11,9"/></svg>
+      </span>
+      <span class="ann ann-l3">keeps<br>regulars close
+        <svg class="al" width="60" height="46"><path class="apath" d="M4,12 C 26,20 30,-2 56,14"/><path class="apath" d="M56,14 L43,10 M56,14 L48,22"/></svg>
+      </span>
+      <span class="ann ann-r3">minds<br>your money
+        <svg class="ar" width="60" height="46"><path class="apath" d="M56,12 C 34,20 30,-2 4,14"/><path class="apath" d="M4,14 L17,10 M4,14 L12,22"/></svg>
+      </span>
+
+      <div class="phone">
+        <div class="screen">
+          <div class="topbar">
+            <span class="mark"><span class="ring"></span><span class="core"></span></span>
+            <b>Beacon</b>
+            <span style="margin-left:auto;font-size:11px;opacity:.7">Bengaluru · Fashion</span>
+          </div>
+          <div class="body">
+            <div class="snap">
+              <h4>Your Market Snapshot</h4>
+              <div class="row"><span class="muted">Competitors within 1km</span><b>14</b></div>
+              <div class="row" style="margin-top:8px"><span class="muted">Your price position</span><b style="color:var(--green)">Mid-premium</b></div>
+              <div style="margin-top:10px" class="row"><span class="muted">Review sentiment vs rivals</span><b>Top 20%</b></div>
+              <div class="bar"><span style="width:80%"></span></div>
+            </div>
+            <div class="insight">
+              <span class="ribbon">◆ Opportunity</span>
+              <p>A competitor 400m away just cut running-shoe prices 15%. You're overstocked in that category. Here's a promo to your repeat customers.</p>
+              <span class="chip">📍 Maps · 2h ago</span><span class="chip">Confidence: High</span>
+              <div class="mini-approve">Approve &amp; launch · ₹1,200 →</div>
+            </div>
+          </div>
+          <div class="tabbar">
+            <div class="tab on"><span class="ti">💬</span>Home</div>
+            <div class="tab"><span class="ti">📈</span>Pulse</div>
+            <div class="tab"><span class="ti">🏪</span>Business</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip">
+  <div class="wrap">
+    Built for the un-platformed merchant:
+    <span class="pill">Instagram</span>
+    <span class="pill">WhatsApp Business</span>
+    <span class="pill">WooCommerce</span>
+    <span class="pill">Square</span>
+    <span class="pill">Etsy</span>
+    <span class="pill">Google Business</span>
+    <b>&nbsp;+ physical stores</b>
+  </div>
+</div>
+
+<!-- PROBLEM -->
+<section id="problem">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Everything on your plate, handled</div>
+      <h2>Running a business is a dozen jobs. Beacon does them all.</h2>
+      <p>Marketer, market analyst, media buyer, stock-watcher, bookkeeper. You've been every one of them. Beacon takes the whole load, so you can get back to running the shop.</p>
+    </div>
+    <div class="carousel">
+      <div class="vc-track" id="vcTrack">
+
+        <div class="vc-card" style="--accent:var(--amber)">
+          <div class="vc-ic">🧲</div>
+          <div class="tag">Bring in demand</div>
+          <h3>The hard part, done for you</h3>
+          <p>Beacon finds the customers ready to buy near you and brings them in with offers and ads that actually run, not just sit in a dashboard as a suggestion.</p>
+        </div>
+
+        <div class="vc-card" style="--accent:var(--violet)">
+          <div class="vc-ic">🔭</div>
+          <div class="tag">See your market</div>
+          <h3>Know exactly where you stand</h3>
+          <p>Competitor pricing, local demand shifts, why footfall dropped this month. Beacon turns public listings and reviews into a live read on your neighbourhood.</p>
+        </div>
+
+        <div class="vc-card" style="--accent:var(--green)">
+          <div class="vc-ic">⚡</div>
+          <div class="tag">Run the ads</div>
+          <h3>Campaigns that run themselves</h3>
+          <p>Audience, creative, budget and schedule, all drafted for you. Approve once and Beacon launches across Meta, Google, WhatsApp and Instagram, then reports back.</p>
+        </div>
+
+        <div class="vc-card" style="--accent:var(--risk)">
+          <div class="vc-ic">💬</div>
+          <div class="tag">Keep customers close</div>
+          <h3>Turn one-time buyers into regulars</h3>
+          <p>Win back lapsed customers, reward your top spenders, and reach the right people at the right moment on the channels they already use every day.</p>
+        </div>
+
+        <div class="vc-card" style="--accent:var(--navy)">
+          <div class="vc-ic">📦</div>
+          <div class="tag">Watch the stock</div>
+          <h3>Never caught short again</h3>
+          <p>Beacon tracks what's selling against what's on the shelf, warns you before you run out, and clears what's moving slow with a timely promotion.</p>
+        </div>
+
+        <div class="vc-card" style="--accent:var(--green)">
+          <div class="vc-ic">🧾</div>
+          <div class="tag">Mind the money</div>
+          <h3>Stay on top of every rupee</h3>
+          <p>Hard spend caps on every campaign, all costs tracked in one place, and plain-language reports on what each campaign earned. No surprises, no waste.</p>
+        </div>
+
+      </div>
+      <div class="vc-nav">
+        <button class="vc-arrow" id="vcPrev" aria-label="Previous">‹</button>
+        <div class="vc-dots" id="vcDots"></div>
+        <button class="vc-arrow" id="vcNext" aria-label="Next">›</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">How Beacon works</div>
+      <h2>A whole back office in your pocket</h2>
+      <p>A market analyst, a media buyer, a stock-watcher and a bookkeeper, working across your systems, in your language, for the price of a subscription.</p>
+    </div>
+    <div class="pillars">
+      <div class="pillar p1">
+        <div class="picon" style="background:rgba(240,168,48,.14);color:var(--amber)">📡</div>
+        <div class="num">01 · SENSE</div>
+        <h3>Sees inside and out</h3>
+        <p>Fuses the outside market (competitors, pricing, demand, reviews) with your own systems: sales, payments, inventory, CRM and socials.</p>
+      </div>
+      <div class="pillar p2">
+        <div class="picon" style="background:rgba(124,92,191,.14);color:var(--violet)">🧠</div>
+        <div class="num">02 · DECIDE</div>
+        <h3>Finds every move worth making</h3>
+        <p>Growth openings, stock running low, lapsed customers, cross-system gaps. Beacon scores it all and surfaces only what's specific and worth acting on.</p>
+      </div>
+      <div class="pillar p3">
+        <div class="picon" style="background:rgba(44,140,110,.14);color:var(--green)">⚡</div>
+        <div class="num">03 · ACT</div>
+        <h3>Does the work for you</h3>
+        <p>Runs ads and messages, drafts reorders, tags customer segments, writes back to your CRM and inventory. You approve; Beacon executes.</p>
+      </div>
+      <div class="pillar p4">
+        <div class="picon" style="background:rgba(201,130,42,.14);color:var(--risk)">📈</div>
+        <div class="num">04 · LEARN</div>
+        <h3>Reports, remembers, improves</h3>
+        <p>Plain-language results, every action logged and reversible, honest about misses. Beacon gets sharper on your business over time.</p>
+      </div>
+    </div>
+    <p class="muted" style="text-align:center;margin-top:30px;font-size:14.5px">One loop across every corner of your business: market &amp; competitors · ads &amp; messaging · customers &amp; CRM · inventory &amp; reorders · payments &amp; spend.</p>
+  </div>
+</section>
+
+<!-- VERTICALS -->
+<section id="industries">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Whatever you sell</div>
+      <h2>One copilot to run the whole business</h2>
+      <p>From filling rooms to reordering stock to chasing leads, Beacon handles the end-to-end work of getting and keeping customers, in your trade's language.</p>
+    </div>
+    <div class="verticals">
+
+      <div class="vcard" style="--accent:var(--navy)">
+        <div class="vhead">
+          <div class="vicon">🏨</div>
+          <div><h3>Hotels &amp; Stays</h3><div class="sub">Rooms, homestays, resorts</div></div>
+        </div>
+        <p class="scenario">A concert books up 3km away next weekend and your rooms sit <b>60% empty</b>. Beacon launches a last-minute stay campaign to nearby travellers, messages past guests a returning-guest rate, and flags that your lowest reviews all mention slow check-in.</p>
+        <div class="vtags"><span>Fill occupancy</span><span>Local ads</span><span>Guest win-back</span><span>Reputation</span></div>
+      </div>
+
+      <div class="vcard" style="--accent:var(--green)">
+        <div class="vhead">
+          <div class="vicon">🛒</div>
+          <div><h3>Grocery &amp; Kirana</h3><div class="sub">Daily needs, provisions</div></div>
+        </div>
+        <p class="scenario">Atta and cooking oil are moving fast before the festival, with <b>two days of stock left</b>. Beacon drafts the reorder, runs a weekend combo offer to your neighbourhood, and pings regulars on WhatsApp the moment their usual items are back.</p>
+        <div class="vtags"><span>Stock alerts</span><span>Reorder</span><span>Local offers</span><span>Repeat buyers</span></div>
+      </div>
+
+      <div class="vcard" style="--accent:var(--risk)">
+        <div class="vhead">
+          <div class="vicon">🛋️</div>
+          <div><h3>Furniture &amp; Home</h3><div class="sub">High-ticket, showroom-led</div></div>
+        </div>
+        <p class="scenario">A rival 1km away starts a sofa sale. Beacon sees you're <b>overstocked on recliners</b>, builds a catalog ad targeting home-shoppers nearby, and follows up every showroom visitor who didn't buy with a financing offer.</p>
+        <div class="vtags"><span>Competitor watch</span><span>Catalog ads</span><span>Lead follow-up</span><span>Clear stock</span></div>
+      </div>
+
+      <div class="vcard" style="--accent:var(--violet)">
+        <div class="vhead">
+          <div class="vicon">🏡</div>
+          <div><h3>Real Estate</h3><div class="sub">Brokers, developers</div></div>
+        </div>
+        <p class="scenario">Searches for 2BHKs in your area are climbing while <b>three listings go stale</b>. Beacon boosts them to local buyers, nurtures every enquiry with automatic follow-ups, and tells you which listing's price is out of step with the market.</p>
+        <div class="vtags"><span>Demand signals</span><span>Listing ads</span><span>Lead nurture</span><span>Price guidance</span></div>
+      </div>
+
+      <div class="vcard" style="--accent:var(--navy)">
+        <div class="vhead">
+          <div class="vicon">💇</div>
+          <div><h3>Salon &amp; Beauty</h3><div class="sub">Appointments, services</div></div>
+        </div>
+        <p class="scenario">Midweek bookings dip and <b>40 clients haven't returned in 60 days</b>. Beacon sends a we-miss-you offer for your slow days, promotes your top service to lookalike locals, and reminds regulars the moment they're due.</p>
+        <div class="vtags"><span>Fill quiet hours</span><span>Win-back</span><span>Targeted ads</span><span>Reminders</span></div>
+      </div>
+
+      <div class="vcard" style="--accent:var(--green)">
+        <div class="vhead">
+          <div class="vicon">☕</div>
+          <div><h3>Cafe &amp; Restaurant</h3><div class="sub">Dine-in, takeaway</div></div>
+        </div>
+        <p class="scenario">Rain's forecast and Tuesday looks slow. Beacon pushes a combo deal to nearby office-goers, watches <b>which dishes are moving</b>, and turns your best recent reviews into fresh ad creative.</p>
+        <div class="vtags"><span>Weather-timed offers</span><span>Footfall ads</span><span>Menu insights</span><span>Reviews</span></div>
+      </div>
+
+    </div>
+    <p class="muted" style="text-align:center;margin-top:28px;font-size:14.5px">Fashion, fitness, pharmacy, electronics and more. If you serve local customers, Beacon runs your growth.</p>
+  </div>
+</section>
+
+<!-- SNAPSHOT FEATURE -->
+<section id="snapshot">
+  <div class="wrap">
+    <div class="split">
+      <div class="feat-txt">
+        <div class="eyebrow">Start in 60 seconds</div>
+        <h2>Type your business name. See where you stand.</h2>
+        <p>Before you connect a single account, Beacon pulls your listing, reviews and competitor set, and hands you a Market Snapshot of exactly where you sit in your neighbourhood.</p>
+        <ul class="checklist">
+          <li><span class="ck">✓</span> Competitive density &amp; who's nearby</li>
+          <li><span class="ck">✓</span> Your price positioning vs rivals</li>
+          <li><span class="ck">✓</span> Review sentiment, benchmarked</li>
+          <li><span class="ck">✓</span> One unserved opportunity to act on</li>
+        </ul>
+        <div style="margin-top:26px"><a class="btn btn-navy" href="#cta">Run my free Snapshot →</a></div>
+      </div>
+      <div class="feat-card">
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px">
+          <span class="mark"><span class="ring"></span><span class="core"></span></span>
+          <b style="font-family:'Sora'">Market Snapshot</b>
+          <span style="margin-left:auto;font-size:12px;opacity:.65">Bella Moda · Berlin</span>
+        </div>
+        <div class="kv"><span>Competitors within catchment</span><b>11 stores</b></div>
+        <div class="kv"><span>Price position</span><span class="badge b-amber">Premium tier</span></div>
+        <div class="kv"><span>Review sentiment</span><span class="badge b-green">Top 15% nearby</span></div>
+        <div class="kv"><span>Category demand trend</span><span class="badge b-violet">Rising ↑ 12%</span></div>
+        <div class="kv"><span>Unserved opportunity</span><b style="color:var(--amber-soft)">Weekend footfall</b></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- WHY / COMPARISON -->
+<section id="why" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Why Beacon is different</div>
+      <h2>Every other copilot only sees inside your store</h2>
+      <p>Shopify Sidekick, GoDaddy Airo, Wix AI, all locked to first-party data on their own platform. Beacon is cross-platform and outside-in.</p>
+    </div>
+    <div class="compare-wrap">
+      <table class="compare">
+        <thead>
+          <tr>
+            <th>What it can do</th>
+            <th>Platform copilots</th>
+            <th>Marketing agency</th>
+            <th class="you">Beacon</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td class="feat">Sees outside your store (market data)</td><td class="no">✕</td><td><span class="yes">✓</span></td><td class="you"><span class="yes">✓</span></td></tr>
+          <tr><td class="feat">Works across any platform (not just one)</td><td class="no">✕ one platform</td><td><span class="yes">✓</span></td><td class="you"><span class="yes">✓</span></td></tr>
+          <tr><td class="feat">Runs ads &amp; campaigns for you</td><td class="no">Partial</td><td><span class="yes">✓</span></td><td class="you"><span class="yes">✓ one tap</span></td></tr>
+          <tr><td class="feat">Watches the market 24/7</td><td class="no">✕</td><td class="no">✕</td><td class="you"><span class="yes">✓</span></td></tr>
+          <tr><td class="feat">Speaks your language (6 at launch)</td><td class="no">Limited</td><td class="no">Varies</td><td class="you"><span class="yes">✓</span></td></tr>
+          <tr><td class="feat">Monthly cost</td><td>Platform-locked</td><td class="no">$500–2,000</td><td class="you"><span class="yes">From $29</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- INSIGHT EXAMPLE -->
+<section id="example">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Beacon speaks first</div>
+      <h2>You don't ask. Beacon tells you.</h2>
+      <p>Every nudge is specific, backed by evidence, and comes with the action already drafted.</p>
+    </div>
+    <div class="split">
+      <div class="feat-card" style="background:#fff;color:var(--ink);border:1px solid var(--line)">
+        <span class="insight" style="display:block;box-shadow:none;padding:0;border-left:4px solid var(--green);padding-left:16px">
+          <span class="ribbon" style="font-size:12px">◆ Opportunity · High confidence</span>
+          <p style="font-size:15px;margin:10px 0 12px">"Your competitor 400m away dropped prices on running shoes by 15%. You're overstocked in that category. Here's a promo campaign with ad creative and a WhatsApp broadcast to your repeat customers. Budget EUR 40. Approve?"</p>
+        </span>
+        <div style="display:flex;gap:8px;flex-wrap:wrap;margin-top:6px">
+          <span class="chip" style="background:var(--bg)">📍 Google Maps · 2h ago</span>
+          <span class="chip" style="background:var(--bg)">📦 Your inventory</span>
+          <span class="chip" style="background:var(--bg)">Est. recover EUR 400–800</span>
+        </div>
+        <div style="display:flex;gap:10px;margin-top:16px">
+          <span class="btn btn-amber" style="flex:1;justify-content:center;font-size:13.5px;padding:11px">Launch · EUR 40</span>
+          <span class="btn" style="border:1.5px solid var(--line);flex:none;font-size:13.5px;padding:11px 16px">Edit</span>
+        </div>
+      </div>
+      <div class="feat-txt">
+        <h2 style="font-size:28px">One insight. Everything decided for you.</h2>
+        <p>Beacon doesn't hand you a dashboard to interpret. It arrives with the audience picked, the creative made, the budget set and a cap in place. You just say yes.</p>
+        <ul class="checklist">
+          <li><span class="ck">✓</span> A hard spend cap on every campaign</li>
+          <li><span class="ck">✓</span> Preview before anything goes live</li>
+          <li><span class="ck">✓</span> Confidence shown as High/Medium, never fake percentages</li>
+          <li><span class="ck">✓</span> Honest reporting when a campaign underperforms</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">See it in action</div>
+      <h2>The whole growth loop, in your pocket</h2>
+      <p>A chat-first mobile app. Ask in your language, or let Beacon speak first. Here's what your merchant sees.</p>
+    </div>
+    <div class="gallery">
+
+      <!-- SCREEN A: Market Snapshot -->
+      <div class="gcol">
+        <div class="device"><div class="scr">
+          <div class="d-top">
+            <span class="av"><span class="core"></span></span>
+            <div><h4>Your Market Snapshot</h4><div class="sub">The Cafe House · Bengaluru</div></div>
+          </div>
+          <div class="d-body">
+            <div class="card">
+              <div class="lbl">📍 Position map</div>
+              <div class="map">
+                <span class="dot" style="left:30%;top:22%"></span>
+                <span class="dot" style="left:70%;top:26%"></span>
+                <span class="dot" style="left:78%;top:52%"></span>
+                <span class="dot" style="left:24%;top:66%"></span>
+                <span class="dot" style="left:56%;top:74%"></span>
+                <span class="dot you">You</span>
+                <span class="cnt">11 competitors</span>
+              </div>
+            </div>
+            <div class="card">
+              <div class="lbl">⭐ Standing</div>
+              <div style="font-size:12.5px;font-weight:600;color:var(--ink);margin-bottom:9px">You're <b style="color:var(--amber)">#4 of 11</b> similar businesses nearby by rating.</div>
+              <div class="kpi">
+                <div class="box"><div class="k">Your rating</div><div class="v">4.2</div><div class="s">292 reviews</div></div>
+                <div class="box"><div class="k">Percentile</div><div class="v">64th</div><div class="s">of nearby rivals</div></div>
+              </div>
+            </div>
+            <div class="card">
+              <div class="lbl">$ Price position</div>
+              <div class="slider"><span class="knob"></span></div>
+              <div class="slider-lbl"><span>Budget</span><span>Premium</span></div>
+            </div>
+          </div>
+        </div></div>
+        <div class="gcap"><h3>The 60-second Snapshot</h3><p>Where you stand in your neighbourhood, before you connect a thing.</p></div>
+      </div>
+
+      <!-- SCREEN B: Pulse feed -->
+      <div class="gcol">
+        <div class="device"><div class="scr">
+          <div class="d-top">
+            <span class="av"><span class="core"></span></span>
+            <div><h4>Pulse</h4><div class="sub">Your insight archive</div></div>
+          </div>
+          <div class="fchips" style="padding:11px 13px 0">
+            <span class="on">All</span><span>Opportunities</span><span>Risks</span><span>Anomalies</span>
+          </div>
+          <div class="d-body" style="padding-top:11px">
+            <div class="digest">
+              <div class="lbl">Weekly digest · Mon 9:00am</div>
+              <p>Revenue tracking normal. Best channel: Instagram (+23%). One anomaly: Saturday spike. New insight: competitor vulnerability.</p>
+            </div>
+            <div class="icard">
+              <div class="rb">↗ Opportunity</div>
+              <h5>Competitor paused all ads — weekend opening</h5>
+              <div class="foot"><span>2h ago</span><span class="plan">Show plan</span></div>
+            </div>
+            <div class="icard risk">
+              <div class="rb">⚠ Risk</div>
+              <h5>Review velocity down 40% in 3 weeks</h5>
+              <div class="foot"><span>Yesterday</span><span class="plan">Show plan</span></div>
+            </div>
+            <div class="icard anom">
+              <div class="rb">⚡ Anomaly</div>
+              <h5>Saturday foot traffic 2.3x above baseline</h5>
+              <div class="foot"><span>Sat</span><span class="plan">Show plan</span></div>
+            </div>
+          </div>
+        </div></div>
+        <div class="gcap"><h3>Beacon speaks first</h3><p>2 to 4 evidenced nudges a week: opportunities, risks and anomalies, ranked.</p></div>
+      </div>
+
+      <!-- SCREEN C: Cross-system findings -->
+      <div class="gcol">
+        <div class="device"><div class="scr">
+          <div class="d-top">
+            <span class="av"><span class="core"></span></span>
+            <div><h4>Cross-system findings</h4><div class="sub">Payments · CRM · Inventory</div></div>
+          </div>
+          <div class="d-body">
+            <div class="card">
+              <div class="lbl" style="color:var(--green)">🟢 Payments × CRM</div>
+              <div class="cross-hd"><h5>41% of your repeat buyers are not in your CRM</h5></div>
+              <span class="wchip">💳 486 buyers</span><span class="wchip">📇 Zoho · 284</span><span class="wchip">Last 90 days</span>
+              <div class="writeback"><div class="wl">Proposed writeback</div><p>Add 38 contacts to Zoho CRM, tagged 'repeat buyer'</p></div>
+              <div class="approve">Approve writeback</div>
+            </div>
+            <div class="card">
+              <div class="lbl" style="color:var(--risk)">🟠 Inventory × Sales velocity</div>
+              <div class="cross-hd"><h5>'House blend' sells 4.2/day, 9 left — out in ~2 days</h5></div>
+              <span class="wchip">📦 Zoho · live</span><span class="wchip">📈 4.2/day</span>
+              <div class="writeback amber"><div class="wl">Proposed writeback</div><p>Draft purchase order: House Blend ×50 to supplier</p></div>
+              <div class="approve amber">Approve writeback</div>
+            </div>
+          </div>
+        </div></div>
+        <div class="gcap"><h3>Fuses your systems</h3><p>Payments, CRM and inventory, connected, with every action logged and reversible.</p></div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- STATS -->
+<section style="background:var(--navy);color:#fff">
+  <div class="wrap">
+    <div class="sec-head" style="margin-bottom:44px">
+      <div class="eyebrow">The opportunity</div>
+      <h2 style="color:#fff">A market hiding in plain sight</h2>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">200M+</div><div class="l">business listings Beacon reads across 195 countries</div></div>
+      <div class="stat"><div class="n">~30M</div><div class="l">un-platformed merchants with no copilot at all</div></div>
+      <div class="stat"><div class="n">6</div><div class="l">languages at launch, incl. Hindi, Tamil, Kannada</div></div>
+      <div class="stat"><div class="n">$29</div><div class="l">a month vs a $500+ agency retainer</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- PRICING -->
+<section id="pricing" style="background:#fff">
+  <div class="wrap">
+    <div class="sec-head">
+      <div class="eyebrow">Pricing</div>
+      <h2>Start free. Pay when it works.</h2>
+      <p>Cost scales with the value you get. Subscribe for insight, and pay a small fee only on ad spend Beacon manages.</p>
+    </div>
+    <div class="price-grid">
+      <div class="plan">
+        <h3>Free</h3>
+        <div class="price">$0</div>
+        <div class="desc">The hook. See where you stand, no card required.</div>
+        <ul>
+          <li>Full Market Snapshot</li>
+          <li>2 insights per month</li>
+          <li>No integrations needed</li>
+        </ul>
+        <a class="btn btn-navy" style="justify-content:center" href="#cta">Get started</a>
+      </div>
+      <div class="plan feat">
+        <div class="flag">MOST POPULAR</div>
+        <h3>Growth</h3>
+        <div class="price">$49<span>/mo</span></div>
+        <div class="desc">Everything, plus one-tap campaign execution.</div>
+        <ul>
+          <li>Unlimited insights &amp; forecasting</li>
+          <li>All connectors</li>
+          <li>Meta, Google, WhatsApp &amp; Instagram campaigns</li>
+          <li>Priority creative generation</li>
+        </ul>
+        <a class="btn btn-amber" style="justify-content:center" href="#cta">Start growing</a>
+        <div class="fee">+ 8–10% of managed ad spend · vs 10–20% agency take</div>
+      </div>
+      <div class="plan">
+        <h3>Core</h3>
+        <div class="price">$29<span>/mo</span></div>
+        <div class="desc">The daily habit. Know your market cold.</div>
+        <ul>
+          <li>Unlimited insights</li>
+          <li>Forecasting &amp; weekly digest</li>
+          <li>All connectors</li>
+        </ul>
+        <a class="btn btn-navy" style="justify-content:center" href="#cta">Choose Core</a>
+      </div>
+    </div>
+    <p class="muted" style="text-align:center;margin-top:22px;font-size:13.5px">Regional pricing available: EUR 29 / EUR 49 · INR 999 / INR 1,999.</p>
+  </div>
+</section>
+
+<!-- CTA -->
+<section id="cta">
+  <div class="wrap">
+    <div class="cta-band">
+      <span class="mark" style="width:40px;height:40px;margin:0 auto 18px"><span class="ring"></span><span class="ring"></span><span class="ring"></span><span class="core" style="width:12px;height:12px"></span></span>
+      <h2>See your market. Win it.</h2>
+      <p>Type your business name and get your free Market Snapshot in under a minute. No integrations, no card, no risk.</p>
+      <div class="hero-cta" style="justify-content:center">
+        <a class="btn btn-amber" href="https://b2-c-beacon.vercel.app/" target="_blank" rel="noopener">Get my free Snapshot →</a>
+        <a class="btn btn-ghost" href="#how">See how it works</a>
+      </div>
+      <div style="margin-top:18px;font-size:13px;color:rgba(255,255,255,.6)">Join the design-partner program · Launching in Germany &amp; India</div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="wrap">
+    <div class="contact-grid">
+      <div>
+        <div class="eyebrow">Get in touch</div>
+        <h2>Talk to the Beacon team</h2>
+        <p>Want a demo, early access, or to join the design-partner program? Leave your details and we'll reach out within one business day.</p>
+        <ul class="clist">
+          <li><span class="ck">✓</span> Early access to the Market Snapshot</li>
+          <li><span class="ck">✓</span> Design-partner pricing</li>
+          <li><span class="ck">✓</span> A walkthrough for your business &amp; market</li>
+        </ul>
+      </div>
+      <div class="cform">
+        <form id="contactForm" novalidate>
+          <div class="fld">
+            <label for="cname">Name</label>
+            <input type="text" id="cname" name="name" placeholder="Your full name" autocomplete="name">
+          </div>
+          <div class="fld">
+            <label for="cemail">Email</label>
+            <input type="email" id="cemail" name="email" placeholder="you@business.com" autocomplete="email">
+          </div>
+          <div class="fld">
+            <label for="cphone">Phone number</label>
+            <input type="tel" id="cphone" name="phone" placeholder="+91 90000 00000" autocomplete="tel">
+          </div>
+          <div class="err" id="cerr">Please fill in your name, a valid email, and phone number.</div>
+          <button type="submit" class="btn btn-amber">Contact us →</button>
+          <div class="note">This opens your email app to send us your details. Prefer email? Write to <a href="mailto:krishna.karthikmn@gmail.com" style="color:var(--navy);font-weight:600">krishna.karthikmn@gmail.com</a></div>
+          <div class="ok" id="cok">Thanks! Your email app should have opened with your details. If not, email us directly at krishna.karthikmn@gmail.com.</div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function(){
+  var track=document.getElementById('vcTrack');
+  if(!track)return;
+  var cards=track.children, n=cards.length;
+  var dotsWrap=document.getElementById('vcDots');
+  var dots=[];
+  for(var i=0;i<n;i++){
+    (function(i){
+      var d=document.createElement('button');
+      d.className='vc-dot'+(i===0?' on':'');
+      d.setAttribute('aria-label','Go to slide '+(i+1));
+      d.onclick=function(){go(i);reset();};
+      dotsWrap.appendChild(d);dots.push(d);
+    })(i);
+  }
+  function step(){return cards[0].getBoundingClientRect().width + 20;}
+  function idx(){return Math.round(track.scrollLeft/step());}
+  function go(i){i=(i%n+n)%n;track.scrollTo({left:Math.round(i*step()),behavior:'smooth'});}
+  function setDots(i){for(var k=0;k<n;k++)dots[k].classList.toggle('on',k===i);}
+  var raf;
+  track.addEventListener('scroll',function(){
+    if(raf)cancelAnimationFrame(raf);
+    raf=requestAnimationFrame(function(){setDots(Math.min(idx(),n-1));});
+  });
+  document.getElementById('vcPrev').onclick=function(){go(idx()-1);reset();};
+  document.getElementById('vcNext').onclick=function(){go(idx()+1);reset();};
+  var timer;
+  function play(){timer=setInterval(function(){var i=idx();go(i>=n-1?0:i+1);},4500);}
+  function reset(){clearInterval(timer);play();}
+  var wrap=track.parentElement;
+  wrap.addEventListener('mouseenter',function(){clearInterval(timer);});
+  wrap.addEventListener('mouseleave',play);
+  play();
+})();
+(function(){
+  var f=document.getElementById('contactForm');
+  if(!f)return;
+  f.addEventListener('submit',function(e){
+    e.preventDefault();
+    var name=document.getElementById('cname').value.trim();
+    var email=document.getElementById('cemail').value.trim();
+    var phone=document.getElementById('cphone').value.trim();
+    var err=document.getElementById('cerr');
+    var ok=document.getElementById('cok');
+    var validEmail=/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    if(!name || !validEmail || !phone){err.style.display='block';return;}
+    err.style.display='none';
+    var subject='Beacon enquiry from '+name;
+    var body='Name: '+name+'\nEmail: '+email+'\nPhone: '+phone+'\n\nSent from the Beacon landing page.';
+    var href='mailto:krishna.karthikmn@gmail.com?subject='+encodeURIComponent(subject)+'&body='+encodeURIComponent(body);
+    window.location.href=href;
+    ok.style.display='block';
+  });
+})();
+</script>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <a class="brand" href="#top" style="margin-bottom:14px">
+          <span class="mark"><span class="ring"></span><span class="core"></span></span> Beacon
+        </a>
+        <p style="max-width:280px;color:rgba(255,255,255,.55)">The AI growth copilot for small merchants. See your market. Act on it. One tap.</p>
+      </div>
+      <div>
+        <h5>Product</h5>
+        <a href="#how">How it works</a>
+        <a href="#snapshot">Market Snapshot</a>
+        <a href="#why">Why Beacon</a>
+        <a href="#pricing">Pricing</a>
+      </div>
+      <div>
+        <h5>Company</h5>
+        <a href="#">About</a>
+        <a href="#">Design partners</a>
+        <a href="#">Careers</a>
+        <a href="#contact">Contact</a>
+      </div>
+      <div>
+        <h5>Legal</h5>
+        <a href="#">Terms</a>
+        <a href="#">Privacy</a>
+        <a href="#">Data &amp; GDPR</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2026 Beacon. All rights reserved.</span>
+      <span>Made for merchants in Berlin, Bengaluru, and everywhere in between.</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
