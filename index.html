@@ -273,6 +273,23 @@
     section{padding:64px 0;}
     .lead{font-size:17px;}
   }
+
+  /* animated chat mockup (product section) */
+  .bca-chat{position:relative;overflow:hidden;}
+  .bca-track{display:flex;flex-direction:column;gap:14px;animation:bcaScroll 17s cubic-bezier(.45,0,.2,1) infinite both;}
+  .bca-track>*{opacity:0;}
+  .bca-r1{animation:bcaR1 17s infinite both;}
+  .bca-r2{animation:bcaR2 17s infinite both;}
+  .bca-r3{animation:bcaR3 17s infinite both;}
+  .bca-r4{animation:bcaR4 17s infinite both;}
+  .bca-cursor{display:inline-block;width:1.5px;height:1em;background:var(--faint);vertical-align:-2px;margin-left:1px;animation:bcaBlink 1s steps(1) infinite;}
+  @keyframes bcaScroll{0%,37%{transform:translateY(0);}51%{transform:translateY(-30px);}64%,73%{transform:translateY(-108px);}88%,100%{transform:translateY(-108px);}}
+  @keyframes bcaR1{0%,1%{opacity:0;transform:translateY(10px);}4%,95%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes bcaR2{0%,11%{opacity:0;transform:translateY(10px);}15%,95%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes bcaR3{0%,39%{opacity:0;transform:translateY(10px);}43%,95%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes bcaR4{0%,59%{opacity:0;transform:translateY(10px);}65%,95%{opacity:1;transform:none;}100%{opacity:0;}}
+  @keyframes bcaBlink{0%,50%{opacity:1;}51%,100%{opacity:0;}}
+  @media(prefers-reduced-motion:reduce){.bca-track,.bca-track>*{animation:none!important;opacity:1!important;transform:none!important;}.bca-cursor{display:none;}}
 </style>
 </head>
 <body>
@@ -469,6 +486,74 @@
     <div class="sec-head">
       <div class="eyebrow" style="justify-content:center;">Inside the product</div>
       <h2>See Beacon at work on your accounts.</h2>
+    </div>
+
+    <div class="prow rev">
+      <div class="pcopy">
+        <span class="tag">Chat</span>
+        <h3>One chat that briefs you, then does the work.</h3>
+        <p>Beacon opens every morning with what moved across your accounts overnight, sourced and scored. Ask a question or approve a play, and it runs across your whole stack.</p>
+        <ul>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5l3.5 3.5L15 5" stroke="#1F9D6B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>A daily brief the moment you log in</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5l3.5 3.5L15 5" stroke="#1F9D6B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Ask anything about any account</li>
+          <li><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M3 9.5l3.5 3.5L15 5" stroke="#1F9D6B" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round"/></svg>Approve once, Beacon runs the play</li>
+        </ul>
+      </div>
+      <div class="pshot">
+        <div class="mock" role="img" aria-label="Beacon chat: greeting Chad, briefing what moved overnight, then drafting a follow-up email on request">
+          <div class="mock-side">
+            <div class="mock-brand"><svg width="18" height="18" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="12" stroke="#E4901F" stroke-width="1.6" opacity=".4"/><circle cx="13" cy="13" r="7.5" stroke="#E4901F" stroke-width="1.6" opacity=".7"/><circle cx="13" cy="13" r="3" fill="#E4901F"/></svg>Beacon</div>
+            <div class="mnav on"><svg width="15" height="15" viewBox="0 0 18 18" fill="none"><path d="M3 4h12v8H8l-3 3v-3H3V4z" stroke="#E4901F" stroke-width="1.3" stroke-linejoin="round"/></svg>Chat</div>
+            <div class="mnav"><svg width="15" height="15" viewBox="0 0 18 18" fill="none"><path d="M6 3l8 6-8 6V3z" stroke="#68758C" stroke-width="1.3" stroke-linejoin="round"/></svg>Plays</div>
+            <div class="mnav"><svg width="15" height="15" viewBox="0 0 18 18" fill="none"><rect x="3" y="3" width="5" height="5" rx="1" stroke="#68758C" stroke-width="1.3"/><rect x="10" y="3" width="5" height="5" rx="1" stroke="#68758C" stroke-width="1.3"/><rect x="3" y="10" width="5" height="5" rx="1" stroke="#68758C" stroke-width="1.3"/><rect x="10" y="10" width="5" height="5" rx="1" stroke="#68758C" stroke-width="1.3"/></svg>Accounts</div>
+            <div class="mnav"><svg width="15" height="15" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="6" r="2.6" stroke="#68758C" stroke-width="1.3"/><path d="M4 14c0-2.5 2.2-4 5-4s5 1.5 5 4" stroke="#68758C" stroke-width="1.3" stroke-linecap="round"/></svg>People</div>
+            <div class="mside-foot">
+              <div class="row"><span class="lbl"><svg width="13" height="13" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="9" r="6.5" stroke="#1F9D6B" stroke-width="1.4"/><path d="M9 5.5v3.5l2.2 1.3" stroke="#1F9D6B" stroke-width="1.5" stroke-linecap="round"/></svg>Autopilot</span><span class="tgl"></span></div>
+              <small>18 plays run overnight</small>
+            </div>
+          </div>
+          <div class="mock-main">
+            <div class="mtop"><h5>Daily brief</h5><span class="live">LIVE</span></div>
+            <div class="mchat bca-chat">
+              <div class="bca-track">
+                <div class="msg bca-r1">
+                  <div class="ava"><svg width="14" height="14" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="11" stroke="#E4901F" stroke-width="1.8" opacity=".5"/><circle cx="13" cy="13" r="3.5" fill="#E4901F"/></svg></div>
+                  <div class="bub">Good morning, Chad. Here's what moved across your accounts overnight.</div>
+                </div>
+                <div class="stack bca-r2">
+                  <div class="scard">
+                    <span class="si" style="background:#E8ECFD"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><circle cx="7" cy="7.5" r="2.4" stroke="#2F54EB" stroke-width="1.3"/><circle cx="13" cy="7.5" r="2.4" stroke="#2F54EB" stroke-width="1.3"/><path d="M2.5 16c0-2 2-3.2 4.5-3.2M17.5 16c0-2-2-3.2-4.5-3.2" stroke="#2F54EB" stroke-width="1.3" stroke-linecap="round"/></svg></span>
+                    <div class="sc"><div class="st">Found 10 lookalikes in the market today</div><div class="ss">New accounts matching your best customers. Added to prospecting.</div></div>
+                    <span class="sx">View</span>
+                  </div>
+                  <div class="scard">
+                    <span class="si" style="background:#EAF1FB"><svg width="15" height="15" viewBox="0 0 24 24" fill="#0A66C2"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.02-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.36V9h3.41v1.56h.05c.48-.9 1.63-1.85 3.36-1.85 3.6 0 4.27 2.37 4.27 5.45v6.29zM5.34 7.43a2.06 2.06 0 110-4.12 2.06 2.06 0 010 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.72v20.56C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.72V1.72C24 .77 23.2 0 22.22 0z"/></svg></span>
+                    <div class="sc"><div class="st">3 people at Northland posted on LinkedIn</div><div class="ss">Fresh buying signals from your target account, summarized for you.</div></div>
+                    <span class="sx">See posts</span>
+                  </div>
+                  <div class="scard">
+                    <span class="si" style="background:var(--green-soft)"><svg width="15" height="15" viewBox="0 0 20 20" fill="none"><path d="M5 3v14M5 4h9l-2 2.5L14 9H5" stroke="#1F9D6B" stroke-width="1.3" stroke-linecap="round" stroke-linejoin="round"/></svg></span>
+                    <div class="sc"><div class="st">Q3 campaign strategy is ready</div><div class="ss">Targets, sequences, and budget split. Projected +$1.2M pipeline.</div></div>
+                    <span class="sx">Review</span>
+                  </div>
+                </div>
+                <div class="msg me bca-r3"><div class="ava"><svg width="13" height="13" viewBox="0 0 18 18" fill="none"><circle cx="9" cy="6" r="2.6" stroke="#2F54EB" stroke-width="1.4"/><path d="M4 14c0-2.5 2.2-4 5-4s5 1.5 5 4" stroke="#2F54EB" stroke-width="1.4" stroke-linecap="round"/></svg></div><div class="bub">Send the follow-up to Northland's VP of Ops.</div></div>
+                <div class="msg bca-r4">
+                  <div class="ava"><svg width="14" height="14" viewBox="0 0 26 26" fill="none"><circle cx="13" cy="13" r="11" stroke="#E4901F" stroke-width="1.8" opacity=".5"/><circle cx="13" cy="13" r="3.5" fill="#E4901F"/></svg></div>
+                  <div class="bub" style="max-width:none;">Done. Here's the email, ready to send.
+                    <div class="email">
+                      <div class="eh">To: Priya Menon, VP Ops · <b>Next steps after your demo</b></div>
+                      <div class="eb">Hi Priya, great to see your team dig into the pricing. Based on what mattered most in the demo, here's how a rollout could look for Northland…</div>
+                    </div>
+                    <div class="btns" style="display:flex;gap:7px;margin-top:9px;"><span class="mbtn pri">Approve &amp; send</span><span class="mbtn sec">Edit</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="composer"><div class="inp">Ask anything about your accounts…<span class="bca-cursor"></span></div><div class="snd"><svg width="16" height="16" viewBox="0 0 18 18" fill="none"><path d="M3 9h11M10 5l4 4-4 4" stroke="#fff" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></div></div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="prow">
